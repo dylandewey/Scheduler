@@ -16,7 +16,7 @@ $(document).ready(function() {
 function schedule() {
     $timeBlock.each(function() {
         let thisBlock = $(this);
-        let thisBlockHr = parseInt (thisBlock.attr('data-hour'));
+        let thisBlockHr = parseInt(thisBlock.attr('data-hour'));
         let todo = {
             hour: thisBlockHr,
             text: '',
@@ -25,6 +25,20 @@ function schedule() {
         console.log(todoItems);
     });
     localStorage.setItem('todos', JSON.stringify(todoItems));
+}
+
+function renderSchedule () {
+    todoItems = localStorage.getItem('todos');
+    todoItems = JSON.parse(todoItems);
+
+    for (var i = 0; i < todoItems.length; i++) {
+        let itemHour = todoItems[i].hour;
+        let itemText = todoItems[i].text;
+
+        $('[data-hour=' + itemHour + ']').children('textarea').valueOf(itemText);
+    }
+console.log(todoItems);
+    
 }
 
     
