@@ -1,2 +1,2 @@
-var a = moment().format('MMMM Do YYYY');
-console.log(a);
+const todayDate = moment().format('MMMM Do, YYYY');
+console.log(todayDate);
