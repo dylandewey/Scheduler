@@ -2,19 +2,12 @@
 const date = $('#currentDay');
 const timeBlock = $('time-block');
 let todoItems = [];
-
-//Gets time from momentjs
-$(document).ready(function() {
-    // sets date text in header
-    const todaysDate = moment().format('LLLL');
-    let currentDate = (date) 
-    currentDate.text(todaysDate);
-    console.log(todaysDate);
-})
+let scheduleBlock = $('.schedule');
+let currentHour = moment().format('H');
 
 //Setup and array of objects for user input in each time slot
 function schedule() {
-    $timeBlock.each(function() {
+    timeBlock.each(function() {
         let thisBlock = $(this);
         let thisBlockHr = parseInt(thisBlock.attr('data-hour'));
         let todo = {
@@ -25,6 +18,24 @@ function schedule() {
         console.log(todoItems);
     });
     localStorage.setItem('todos', JSON.stringify(todoItems));
+}
+//format time blocks for past, present, future
+function timeBlockSetup() {
+    timeBlock.each(function() {
+        let thisBlock = $(this);
+        let thisBlockHr = parseInt (thisBlock.attr('data-hour'));
+
+        if (thisBlockHr == currentHour) {
+            thisBlock.addClass('present').removeClass('past future');
+        }
+        if (thisBlockHr < currentHour) {
+            thisBlock.addClass('past').removeClass('present future');
+        }
+        if (thisBlockHr > currentHour) {
+            thisBlock.addClass('future').removeClass('past present');
+        }
+        console.log(currentHour);
+    });
 }
 
 function renderSchedule () {
@@ -51,7 +62,21 @@ function saveHandler () {
         }
     }
     localStorage.setItem('todos', JSON.stringify(todoItems));
+    renderSchedule();
 }
+
+//Gets time from momentjs
+$(document).ready(function() {
+    // sets date text in header
+    timeBlockSetup();
+    const todaysDate = moment().format('LLLL'); 
+    const hour = moment().format('H');
+    date.text(todaysDate);
+    console.log(todaysDate);
+    
+    scheduleBlock.on('click', 'button', saveHandler);
+})
+
 
     
 
