@@ -35,10 +35,22 @@ function renderSchedule () {
         let itemHour = todoItems[i].hour;
         let itemText = todoItems[i].text;
 
-        $('[data-hour=' + itemHour + ']').children('textarea').valueOf(itemText);
+        $('[data-hour=' + itemHour + ']').children('textarea').val(itemText);
     }
-console.log(todoItems);
-    
+console.log(todoItems);   
+}
+
+function saveHandler () {
+    let thisBlock = $(this).parent();
+    let updateHour = $(this).parent().attr('data-hour');
+    let addItem = (($(this).parent()).children('textarea')).val();
+
+    for (var j = 0; j < todoItems.length; j++) {
+        if (todoItems[j].hour == updateHour) {
+            todoItems[j].text = addItem;
+        }
+    }
+    localStorage.setItem('todos', JSON.stringify(todoItems));
 }
 
     
