@@ -17,6 +17,7 @@ function schedule() {
             text: '',
         }
         todoItems.push(todo);
+    
         console.log(todo);
     });
     localStorage.setItem('todos', JSON.stringify(todoItems));
@@ -56,7 +57,7 @@ console.log(todoItems);
 function saveHandler () {
     let updateHour = $(this).parent().attr('data-hour');
     let addItem = (($(this).parent()).children('textarea')).val();
-
+    console.log(addItem);
     for (var j = 0; j < todoItems.length; j++) {
         if (todoItems[j].hour == updateHour) {
             todoItems[j].text = addItem;
@@ -64,6 +65,7 @@ function saveHandler () {
     }
     localStorage.setItem('todos', JSON.stringify(todoItems));
     renderSchedule();
+    schedule();
 }
 
 
@@ -82,6 +84,7 @@ $(document).ready(function() {
     
     scheduleBlock.on('click', 'button', saveHandler);
 });
+
 
 
     
