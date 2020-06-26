@@ -1,10 +1,10 @@
 //Variables
-const date = $('#currentDay');
-const timeBlock = $('time-block');
+let date = $('#currentDay');
+let timeBlock = $('.time-block');
 let todoItems = [];
 let scheduleBlock = $('.schedule');
 let currentHour = moment().format('H');
-const todaysDate = moment().format('LLLL');
+let todaysDate = moment().format('LLLL');
 
 //Setup and array of objects for user input in each time slot
 function schedule() {
@@ -76,6 +76,7 @@ $(document).ready(function() {
      
     date.text(todaysDate);
     console.log(todaysDate);
+    console.log(currentHour);
     renderSchedule();
     
     
