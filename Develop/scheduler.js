@@ -3,6 +3,7 @@ let date = $('#currentDay');
 let timeBlock = $('.time-block');
 let todoItems = [];
 let scheduleBlock = $('.schedule');
+//Gets time/date from momentjs
 let currentHour = moment().format('H');
 let todaysDate = moment().format('LLLL');
 
@@ -53,7 +54,6 @@ console.log(todoItems);
 }
 
 function saveHandler () {
-    //let thisBlock = $(this).parent();
     let updateHour = $(this).parent().attr('data-hour');
     let addItem = (($(this).parent()).children('textarea')).val();
 
@@ -66,9 +66,9 @@ function saveHandler () {
     renderSchedule();
 }
 
-//Gets time from momentjs
+
 $(document).ready(function() {
-    // sets date text in header
+    
     timeBlockSetup();
     if (!localStorage.getItem('todos')) {
         schedule();
