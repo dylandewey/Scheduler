@@ -18,9 +18,10 @@ function schedule() {
         }
         todoItems.push(todo);
     
-        console.log(todo);
+        console.log(todo.text);
     });
     localStorage.setItem('todos', JSON.stringify(todoItems));
+    
 }
 //format time blocks for past, present, future
 function timeBlockSetup() {
@@ -54,10 +55,11 @@ function renderSchedule () {
 console.log(todoItems);   
 }
 
-function saveHandler () {
+function saveHandler() {
     let updateHour = $(this).parent().attr('data-hour');
     let addItem = (($(this).parent()).children('textarea')).val();
     console.log(addItem);
+    
     for (var j = 0; j < todoItems.length; j++) {
         if (todoItems[j].hour == updateHour) {
             todoItems[j].text = addItem;
