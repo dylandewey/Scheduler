@@ -10,4 +10,5 @@ The most difficult part of the CSS was getting the classes put into the HTML so 
 ## JS/JQuery 
 Now this is where it gets difficult.  I'm still trying to wrap my head around all the functions and how they all work.  Then, we put JQuery in it and that's even more to know.  I'm still working on all of that.  I think with time, practice, and reading a lot of code it will all continue to make more and more sense.  I was able to get everything to work in the scheduler except for the text in the localStorage.  I can see in the console that the key/value pairs are being saved but for some reason I can't get the input from the user to store and stay even after refresh.  I'm going to continue to try and figure this out and get it working how it is supposed to. 
 
-<img src = 
+<img alt="Scheduler" src="./Develop/scheduler.jpeg" width="500">
+
