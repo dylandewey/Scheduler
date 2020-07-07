@@ -1,8 +1,8 @@
 //Variables
 let date = $('#currentDay');
 let timeBlock = $('.time-block');
-let todoItems = [];
 let scheduleBlock = $('.schedule');
+let todoItems = [];
 //Gets time/date from momentjs
 let currentHour = moment().format('H');
 let todaysDate = moment().format('LLLL');
@@ -14,11 +14,11 @@ function schedule() {
         let thisBlockHr = parseInt(thisBlock.attr('data-hour'));
         let todo = {
             hour: thisBlockHr,
-            text: '',
+            text: "",
         }
         todoItems.push(todo);
     
-        console.log(todo.text);
+        console.log($(this));
     });
     localStorage.setItem('todos', JSON.stringify(todoItems));
     
@@ -57,8 +57,9 @@ console.log(todoItems);
 
 function saveHandler() {
     let updateHour = $(this).parent().attr('data-hour');
-    let addItem = (($(this).parent()).children('textarea')).val();
+    let addItem = $(this).parent().children('textarea').val();
     console.log(addItem);
+    console.log(updateHour);
     
     for (var j = 0; j < todoItems.length; j++) {
         if (todoItems[j].hour == updateHour) {
@@ -67,8 +68,11 @@ function saveHandler() {
     }
     localStorage.setItem('todos', JSON.stringify(todoItems));
     renderSchedule();
-    schedule();
+    //schedule();
+    console.log(todoItems);
+    console.log("click");
 }
+
 
 
 $(document).ready(function() {
@@ -84,7 +88,7 @@ $(document).ready(function() {
     renderSchedule();
     
     
-    scheduleBlock.on('click', 'button', saveHandler);
+    $(".saveBtn").on('click', saveHandler);
 });
 
 
