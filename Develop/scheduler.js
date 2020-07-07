@@ -68,7 +68,6 @@ function saveHandler() {
     }
     localStorage.setItem('todos', JSON.stringify(todoItems));
     renderSchedule();
-    //schedule();
     console.log(todoItems);
     console.log("click");
 }
